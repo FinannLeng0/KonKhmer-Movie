@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:padding="8dp"
-    tools:context=".home.DownloadFragment">
+    tools:context=".view.DownloadFragment">
 
     <TextView
         android:id="@+id/titleText"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.konkhmermovie.home.HomeFragment"
+        android:name="com.example.konkhmermovie.view.HomeFragment"
         android:label="Home" >
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.konkhmermovie.search.SearchFragment"
+        android:name="com.example.konkhmermovie.view.SearchFragment"
         android:label="Search" >
         <action
             android:id="@+id/action_searchFragment_to_movieDetailFragment"
@@ -58,7 +58,7 @@
 
     <fragment
         android:id="@+id/postFragment"
-        android:name="com.example.konkhmermovie.home.PostFragment"
+        android:name="com.example.konkhmermovie.view.PostFragment"
         android:label="Post" >
         <action
             android:id="@+id/action_postFragment_to_favoriteFragment"
@@ -82,7 +82,7 @@
 
     <fragment
         android:id="@+id/downloadFragment"
-        android:name="com.example.konkhmermovie.home.DownloadFragment"
+        android:name="com.example.konkhmermovie.view.DownloadFragment"
         android:label="Download" >
         <action
             android:id="@+id/action_downloadFragment_to_profileFragment"
@@ -94,7 +94,7 @@
 
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.example.konkhmermovie.home.MovieDetailFragment"
+        android:name="com.example.konkhmermovie.view.MovieDetailFragment"
         android:label="Movie Detail">
 
         <argument
@@ -126,7 +126,7 @@
 
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.konkhmermovie.favorite.FavoriteFragment"
+        android:name="com.example.konkhmermovie.view.FavoriteFragment"
         android:label="Favorites" >
         <action
             android:id="@+id/action_favoriteFragment_to_movieDetailFragment"
@@ -137,7 +137,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.konkhmermovie.home.ProfileFragment"
+        android:name="com.example.konkhmermovie.view.ProfileFragment"
         android:label="ProfileFragment" >
 
         <argument
@@ -160,7 +160,7 @@
 
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.konkhmermovie.home.SignUpFragment"
+        android:name="com.example.konkhmermovie.view.SignUpFragment"
         android:label="SignUpFragment" >
         <action
             android:id="@+id/action_signUpFragment_to_profileFragment"
@@ -180,7 +180,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.konkhmermovie.home.LoginFragment"
+        android:name="com.example.konkhmermovie.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -195,7 +195,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileSuccessFragment"
-        android:name="com.example.konkhmermovie.home.ProfileSuccessFragment"
+        android:name="com.example.konkhmermovie.view.ProfileSuccessFragment"
         android:label="ProfileSuccessFragment" >
         <action
             android:id="@+id/action_profileSuccessFragment_to_homeFragment"
