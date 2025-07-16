@@ -29,7 +29,7 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
-    <!-- Fullscreen theme without action bar, status bar, etc -->
+    <!-- Fullscreen theme without action bar, status bar / Noted -->
     <style name="Theme.YourApp.Fullscreen" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
@@ -46,11 +46,11 @@
     <style name="CustomHintText" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textColor">#888888</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:translationY">1dp</item> <!-- This shifts the floating label lower -->
+        <item name="android:translationY">1dp</item>
     </style>
 
     <style name="RedHintText" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="android:textColor">#FF0000</item> <!-- 🔴 Red floating label -->
+        <item name="android:textColor">#FF0000</item>
         <item name="android:textSize">12sp</item>
     </style>
     <style name="TransparentDialog" parent="Theme.AppCompat.Dialog">
@@ -105,9 +105,5 @@
     <style name="Body2Font" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/movie</item>
     </style>
-
-
-
-
 
 </resources>
