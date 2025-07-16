@@ -155,39 +155,88 @@ class SearchFragment : Fragment() {
         snackbar?.show()
     }
 
+//    private fun loadAllMovies() {
+//        allMovies.clear()
+//        val videosRef = FirebaseDatabase.getInstance().getReference("videos")
+//        val moviesRef = FirebaseDatabase.getInstance().getReference("movies")
+//
+//        videosRef.addListenerForSingleValueEvent(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                for (videoSnapshot in snapshot.children) {
+//                    val video = videoSnapshot.getValue(Movie::class.java)
+//                    if (video != null) allMovies.add(video)
+//                }
+//
+//                moviesRef.addListenerForSingleValueEvent(object : ValueEventListener {
+//                    override fun onDataChange(snapshot: DataSnapshot) {
+//                        if (!isAdded || _binding == null) return
+//
+//                        for (categorySnapshot in snapshot.children) {
+//                            for (movieSnapshot in categorySnapshot.children) {
+//                                val movie = movieSnapshot.getValue(Movie::class.java)
+//                                if (movie != null) allMovies.add(movie)
+//                            }
+//                        }
+//
+//                        _binding?.let {
+//                            filterMovies(it.searchBar.text.toString())
+//                        }
+//                    }
+//
+//                    override fun onCancelled(error: DatabaseError) {}
+//                })
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {}
+//        })
+//    }
+
     private fun loadAllMovies() {
         allMovies.clear()
-        val videosRef = FirebaseDatabase.getInstance().getReference("videos")
+        val currentUser = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser
+
         val moviesRef = FirebaseDatabase.getInstance().getReference("movies")
 
-        videosRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        moviesRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (videoSnapshot in snapshot.children) {
-                    val video = videoSnapshot.getValue(Movie::class.java)
-                    if (video != null) allMovies.add(video)
+                if (!isAdded || _binding == null) return
+
+                for (categorySnapshot in snapshot.children) {
+                    for (movieSnapshot in categorySnapshot.children) {
+                        val movie = movieSnapshot.getValue(Movie::class.java)
+                        if (movie != null) allMovies.add(movie)
+                    }
                 }
 
-                moviesRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (!isAdded || _binding == null) return
+                if (currentUser != null) {
+                    val videosRef = FirebaseDatabase.getInstance().getReference("videos")
+                    videosRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            for (videoSnapshot in snapshot.children) {
+                                val video = videoSnapshot.getValue(Movie::class.java)
+                                if (video != null) allMovies.add(video)
+                            }
 
-                        for (categorySnapshot in snapshot.children) {
-                            for (movieSnapshot in categorySnapshot.children) {
-                                val movie = movieSnapshot.getValue(Movie::class.java)
-                                if (movie != null) allMovies.add(movie)
+                            _binding?.let {
+                                filterMovies(it.searchBar.text.toString())
                             }
                         }
 
-                        _binding?.let {
-                            filterMovies(it.searchBar.text.toString())
+                        override fun onCancelled(error: DatabaseError) {
+                            _binding?.let {
+                                filterMovies(it.searchBar.text.toString())
+                            }
                         }
+                    })
+                } else {
+                    _binding?.let {
+                        filterMovies(it.searchBar.text.toString())
                     }
-
-                    override fun onCancelled(error: DatabaseError) {}
-                })
+                }
             }
 
-            override fun onCancelled(error: DatabaseError) {}
+            override fun onCancelled(error: DatabaseError) {
+            }
         })
     }
 
